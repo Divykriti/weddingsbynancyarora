@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weddings by Nancy Arora</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --pink:   #D4245E;
+      --yellow: #FFB627;
+      --white:  #FFFAF5;
+      --light:  #F7F4F0;
+      --dark:   #1C1410;
+      --muted:  #7A6A65;
+      --border: #EDE4D8;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      height: 60px; display: flex; align-items: center;
+    }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--dark); }
+    .nav-logo span { color: var(--pink); }
+    .nav-links { display: none; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--muted); letter-spacing: .03em; transition: color .2s; }
+    .nav-links a:hover { color: var(--dark); }
+    .nav-cta {
+      background: var(--pink); color: white; font-size: 12px; font-weight: 600;
+      padding: 9px 18px; border-radius: 40px; letter-spacing: .04em; white-space: nowrap;
+    }
+
+    /* ── HERO ── */
+    .hero { position: relative; height: 100svh; min-height: 560px; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(28,20,16,.52); }
+    .hero-content {
+      position: relative; z-index: 2; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 0 24px;
+    }
+    .eyebrow {
+      font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--yellow); margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px; font-weight: 300; color: white; line-height: 1.05; margin-bottom: 16px;
+    }
+    .hero h1 em { font-style: italic; color: var(--yellow); }
+    .hero-sub {
+      font-size: 15px; font-weight: 300; color: rgba(255,250,245,.72);
+      line-height: 1.65; margin-bottom: 36px; max-width: 340px;
+    }
+    .hero-actions { display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; width: 100%; }
+    .btn-primary {
+      display: inline-block; background: var(--pink); color: white;
+      font-size: 13px; font-weight: 600; letter-spacing: .06em;
+      padding: 14px 32px; border-radius: 40px; width: fit-content;
+    }
+    .btn-ghost {
+      display: inline-block; border: 1.5px solid rgba(255,250,245,.35);
+      color: rgba(255,250,245,.85); font-size: 13px; letter-spacing: .06em;
+      padding: 13px 32px; border-radius: 40px; width: fit-content;
+    }
+
+    /* ── SERVICES ── */
+    .services { padding: 72px 0; background: var(--light); }
+    .services-head { text-align: center; margin-bottom: 40px; padding: 0 20px; }
+    .services-head h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 300; line-height: 1.15; margin-bottom: 10px;
+    }
+    .services-head p { font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 400px; margin: 0 auto; }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 0 20px;
+    }
+    .service-card {
+      background: white; border-radius: 18px; padding: 24px 20px;
+      border: 1px solid var(--border); cursor: pointer;
+      transition: box-shadow .2s, transform .2s;
+      position: relative;
+    }
+    .service-card:hover { box-shadow: 0 8px 28px rgba(28,20,16,.08); transform: translateY(-2px); }
+    .service-card.featured {
+      grid-column: span 2;
+      background: var(--pink); border-color: var(--pink);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .icon-wrap {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px; flex-shrink: 0;
+    }
+    .icon-wrap svg { width: 22px; height: 22px; }
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px; font-weight: 600; color: var(--dark); margin-bottom: 6px; line-height: 1.2;
+    }
+    .service-card p { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+    .card-link { font-size: 11px; font-weight: 600; letter-spacing: .04em; display: inline-flex; align-items: center; gap: 4px; }
+    .card-link::after { content: '→'; }
+
+    /* Featured card overrides */
+    .featured .featured-text { flex: 1; }
+    .featured .sig-tag {
+      font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,250,245,.6); margin-bottom: 8px;
+    }
+    .featured h3 { font-size: 26px; color: white; margin-bottom: 6px; }
+    .featured p { color: rgba(255,250,245,.72); font-size: 13px; margin-bottom: 16px; }
+    .featured .card-link { color: var(--yellow); }
+    .featured-icon { opacity: .2; flex-shrink: 0; }
+    .featured-icon svg { width: 72px; height: 72px; stroke: white; }
+
+    /* ── GALLERY ── */
+    .gallery { padding: 12px; background: var(--dark); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 180px 180px 180px;
+      gap: 8px;
+    }
+    .gallery-item { position: relative; overflow: hidden; border-radius: 10px; }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; display: block; }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 14px 16px 16px;
+      background: linear-gradient(transparent, rgba(28,20,16,.82));
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px; font-style: italic;
+      color: rgba(255,250,245,.92); line-height: 1.3;
+    }
+
+    /* ── NANCY ── */
+    .nancy { padding: 72px 0; background: var(--white); border-top: 1px solid var(--border); }
+    .nancy-inner { display: flex; flex-direction: column; gap: 32px; }
+    .nancy-photo {
+      width: 100%; max-width: 360px; margin: 0 auto;
+      border-radius: 18px; overflow: hidden; aspect-ratio: 3/4;
+      box-shadow: 0 12px 48px rgba(28,20,16,.12);
+    }
+    .nancy-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .nancy-text { padding: 0 20px; text-align: center; }
+    .nancy-label { font-size: 10px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+    .nancy-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 300; font-style: italic;
+      color: var(--dark); line-height: 1.3; margin-bottom: 24px;
+    }
+    .nancy-quote em { color: var(--pink); font-style: normal; }
+    .nancy-attr { font-size: 12px; color: var(--muted); letter-spacing: .06em; margin-bottom: 24px; }
+    .nancy-bio { font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+    /* ── CONSULT ── */
+    .consult { padding: 72px 0; background: var(--light); }
+    .consult-inner { text-align: center; padding: 0 20px; }
+    .consult-inner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 300; line-height: 1.15; margin-bottom: 10px;
+    }
+    .consult-inner h2 em { font-style: italic; color: var(--pink); }
+    .consult-inner p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 28px; }
+    .consult-form { display: flex; flex-direction: column; gap: 10px; max-width: 360px; margin: 0 auto; }
+    .consult-input {
+      border: 1.5px solid var(--border); border-radius: 40px;
+      padding: 14px 22px; font-size: 14px; font-family: 'DM Sans', sans-serif;
+      background: white; color: var(--dark); outline: none; width: 100%;
+      transition: border-color .2s;
+    }
+    .consult-input:focus { border-color: var(--pink); }
+    .consult-input::placeholder { color: var(--muted); }
+    .consult-btn {
+      background: var(--pink); color: white; border: none; cursor: pointer;
+      font-size: 13px; font-weight: 600; letter-spacing: .06em;
+      padding: 14px 28px; border-radius: 40px; font-family: 'DM Sans', sans-serif;
+      width: 100%;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); padding: 32px 20px; text-align: center; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: white; margin-bottom: 16px; }
+    .footer-logo span { color: var(--yellow); }
+    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; list-style: none; margin-bottom: 16px; }
+    .footer-links a { font-size: 12px; color: rgba(255,250,245,.4); letter-spacing: .06em; }
+    .footer-ig { font-size: 12px; color: rgba(255,250,245,.35); }
+
+    /* ── MODAL ── */
+    .modal {
+      position: fixed; inset: 0; z-index: 500;
+      display: flex; align-items: flex-end; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+    }
+    .modal.active { opacity: 1; pointer-events: all; }
+    .modal-overlay { position: absolute; inset: 0; background: rgba(28,20,16,.6); backdrop-filter: blur(6px); }
+    .modal-card {
+      position: relative; z-index: 1; background: var(--white);
+      border-radius: 24px 24px 0 0; padding: 32px 24px 40px;
+      width: 100%; max-width: 560px; max-height: 88vh;
+      overflow-y: auto; transform: translateY(20px); transition: transform .3s;
+    }
+    .modal.active .modal-card { transform: translateY(0); }
+    .modal-handle { width: 40px; height: 4px; background: var(--border); border-radius: 4px; margin: 0 auto 24px; }
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      background: none; border: none; cursor: pointer;
+      font-size: 22px; color: var(--muted); line-height: 1;
+    }
+    .modal-icon-wrap { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .modal-icon-wrap svg { width: 26px; height: 26px; }
+    .modal h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; margin-bottom: 6px; }
+    .modal-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 22px; }
+    .modal-section-label { font-size: 9px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .modal-items { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .modal-items li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--dark); line-height: 1.5; }
+    .modal-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .modal-divider { height: 1px; background: var(--border); margin-bottom: 22px; }
+    .modal-cta-label { font-size: 13px; color: var(--dark); margin-bottom: 12px; font-weight: 500; }
+    .modal-form { display: flex; gap: 8px; }
+    .modal-input {
+      flex: 1; border: 1.5px solid var(--border); border-radius: 40px;
+      padding: 12px 18px; font-size: 13px; font-family: 'DM Sans', sans-serif;
+      background: white; color: var(--dark); outline: none; transition: border-color .2s;
+      min-width: 0;
+    }
+    .modal-input:focus { border-color: var(--pink); }
+    .modal-input::placeholder { color: var(--muted); }
+    .modal-btn {
+      background: var(--pink); color: white; border: none; cursor: pointer;
+      font-size: 12px; font-weight: 600; padding: 12px 18px;
+      border-radius: 40px; font-family: 'DM Sans', sans-serif; white-space: nowrap;
+    }
+
+    /* ── OM LOGO ── */
+    .logo-om { color: var(--pink); font-family: 'Cormorant Garamond', serif; font-size: 22px; margin-right: 4px; line-height: 1; vertical-align: -2px; }
+    .footer-om { color: var(--yellow); font-size: 24px; }
+
+    /* ── FEATURED CTA BUTTON ── */
+    .btn-featured {
+      display: inline-block; background: white; color: var(--pink);
+      font-size: 12px; font-weight: 600; letter-spacing: .05em;
+      padding: 11px 24px; border-radius: 40px; margin-top: 8px; cursor: pointer;
+    }
+
+    /* ── INSTAGRAM BUTTON ── */
+    .instagram-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1.5px solid var(--border); border-radius: 40px;
+      padding: 12px 24px; font-size: 13px; color: var(--dark);
+      font-weight: 500; background: white; transition: border-color .2s, color .2s;
+    }
+    .instagram-btn:hover { border-color: var(--pink); color: var(--pink); }
+    .instagram-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ── CONSULT EXTRAS ── */
+    .consult-or { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 22px 0 12px; }
+    .consult-phone { font-size: 13px; color: var(--muted); margin-top: 16px; }
+    .consult-phone a { color: var(--dark); font-weight: 500; }
+
+    /* ── FOOTER PHONE ── */
+    .footer-phone { font-size: 12px; color: rgba(255,250,245,.45); margin-top: 8px; }
+    .footer-phone a { color: rgba(255,250,245,.6); }
+
+    /* ── MOBILE: last card full-width ── */
+    @media (max-width: 767px) {
+      .service-card:last-child { grid-column: span 2; }
+    }
+
+    /* ── DESKTOP ── */
+    @media (min-width: 768px) {
+      .container { padding: 0 48px; }
+      nav { height: 68px; }
+      .nav-logo { font-size: 20px; }
+      .nav-links { display: flex; }
+      .nav-cta { font-size: 13px; padding: 10px 22px; }
+
+      .hero h1 { font-size: 76px; }
+      .hero-sub { font-size: 17px; max-width: 460px; }
+      .hero-actions { flex-direction: row; justify-content: center; }
+
+      .services { padding: 96px 0; }
+      .services-head h2 { font-size: 50px; }
+      .service-grid { grid-template-columns: repeat(3, 1fr); padding: 0 48px; gap: 16px; }
+      .service-card.featured { grid-column: span 3; padding: 44px 48px; }
+      .featured h3 { font-size: 36px; }
+      .featured-icon svg { width: 110px; height: 110px; }
+      .service-card { padding: 32px 28px; }
+      .service-card h3 { font-size: 21px; }
+      .service-card p { font-size: 13px; }
+
+      .gallery { padding: 16px; }
+      .gallery-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 280px 280px;
+        gap: 10px;
+      }
+      .gallery-item { border-radius: 14px; }
+      .gallery-item.tall { grid-row: span 2; }
+      .gallery-caption { font-size: 15px; padding: 18px 22px 22px; }
+
+      .nancy { padding: 96px 0; }
+      .nancy-inner { flex-direction: row; gap: 72px; align-items: center; padding: 0 48px; }
+      .nancy-photo { width: 380px; flex-shrink: 0; margin: 0; }
+      .nancy-quote { font-size: 40px; }
+      .nancy-bio { font-size: 15px; }
+
+      .consult { padding: 96px 0; }
+      .consult-inner h2 { font-size: 50px; }
+      .consult-form { max-width: 440px; }
+
+      .modal { align-items: center; }
+      .modal-card { border-radius: 24px; padding: 48px; max-height: 86vh; }
+      .modal-handle { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo"><span class="logo-om">ॐ</span> Weddings by <span>Nancy Arora</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#nancy">About Nancy</a></li>
+      <li><a href="#consult">Contact</a></li>
+    </ul>
+    <a href="#consult" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-bg" src="images/wedding-fun.jpg" alt="Wedding celebration" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="eyebrow">Wedding Planners & Choreographers · India</p>
+    <h1>Weddings by<br><em>Nancy Arora</em></h1>
+    <p class="hero-sub">Choreography, anchoring, photography, decor and full-day management — all under one roof.</p>
+    <div class="hero-actions">
+      <a href="#consult" class="btn-primary">Plan Your Wedding</a>
+      <a href="#services" class="btn-ghost">See Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-head">
+    <p class="eyebrow">What we do</p>
+    <h2>We handle the chaos.<br>You enjoy the wedding.</h2>
+    <p>From choreography to day-of management — click any service to see what's included.</p>
+  </div>
+
+  <div class="service-grid">
+
+    <!-- Featured -->
+    <div class="service-card featured" onclick="openModal('choreography')">
+      <div class="featured-text">
+        <p class="sig-tag">Signature Service</p>
+        <h3>Wedding Choreography</h3>
+        <p>Your whole family on the dance floor — actually having fun. Sangeet, Baraat, surprise entries. This is where it all started.</p>
+        <span class="btn-featured">See what's included →</span>
+      </div>
+      <div class="featured-icon" data-icon="choreography"></div>
+    </div>
+
+    <!-- Anchoring -->
+    <div class="service-card" onclick="openModal('anchoring')">
+      <div class="icon-wrap" data-icon="anchoring" style="background:rgba(244,130,42,.1)"></div>
+      <h3>Anchoring & Hosting</h3>
+      <p>High-energy, bilingual anchoring for every function.</p>
+      <span class="card-link" style="color:#F4822A">View details</span>
+    </div>
+
+    <!-- Event Experience -->
+    <div class="service-card" onclick="openModal('events')">
+      <div class="icon-wrap" data-icon="events" style="background:rgba(232,176,48,.12)"></div>
+      <h3>Event Experience Design</h3>
+      <p>Games, activities, and flow so no moment ever lulls.</p>
+      <span class="card-link" style="color:#E8B030">View details</span>
+    </div>
+
+    <!-- Stationery -->
+    <div class="service-card" onclick="openModal('stationery')">
+      <div class="icon-wrap" data-icon="stationery" style="background:rgba(196,67,106,.1)"></div>
+      <h3>Wedding Stationery & Branding</h3>
+      <p>Invite, logo, hashtag, welcome boards — your wedding's full visual identity.</p>
+      <span class="card-link" style="color:#C4436A">View details</span>
+    </div>
+
+    <!-- Photography -->
+    <div class="service-card" onclick="openModal('photography')">
+      <div class="icon-wrap" data-icon="photography" style="background:rgba(123,94,167,.1)"></div>
+      <h3>Photography & Social Media</h3>
+      <p>In-house photographers and live Instagram coverage during the wedding.</p>
+      <span class="card-link" style="color:#7B5EA7">View details</span>
+    </div>
+
+    <!-- Social Media Coverage -->
+    <div class="service-card" onclick="openModal('social')">
+      <div class="icon-wrap" data-icon="social" style="background:rgba(91,110,232,.1)"></div>
+      <h3>Social Media Coverage</h3>
+      <p>Two dedicated team members. Live stories, reels and raw content — your wedding, all over Instagram.</p>
+      <span class="card-link" style="color:#5B6EE8">View details</span>
+    </div>
+
+    <!-- Vendors -->
+    <div class="service-card" onclick="openModal('vendors')">
+      <div class="icon-wrap" data-icon="vendors" style="background:rgba(196,86,42,.1)"></div>
+      <h3>Vendor Curation</h3>
+      <p>We find the best caterers, decorators, MUA, mehendi and more — then negotiate for you.</p>
+      <span class="card-link" style="color:#C4562A">View details</span>
+    </div>
+
+    <!-- Gifting -->
+    <div class="service-card" onclick="openModal('gifting')">
+      <div class="icon-wrap" data-icon="gifting" style="background:rgba(255,182,39,.12)"></div>
+      <h3>Gifting & Room Experience</h3>
+      <p>Hampers, welcome kits, ring trays — touches that make guests feel at home.</p>
+      <span class="card-link" style="color:#FFB627">View details</span>
+    </div>
+
+    <!-- Special Moments -->
+    <div class="service-card" onclick="openModal('moments')">
+      <div class="icon-wrap" data-icon="moments" style="background:rgba(184,122,26,.1)"></div>
+      <h3>Special Moments Planning</h3>
+      <p>Ring exchange, cake cutting, pheras, entries — every moment planned and executed.</p>
+      <span class="card-link" style="color:#B87A1A">View details</span>
+    </div>
+
+    <!-- Day-of -->
+    <div class="service-card" onclick="openModal('management')">
+      <div class="icon-wrap" data-icon="management" style="background:rgba(122,58,42,.1)"></div>
+      <h3>Day-of Management</h3>
+      <p>Show flow, check-ins, shadows, logistics — we're on the ground so you're not.</p>
+      <span class="card-link" style="color:#7A3A2A">View details</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery">
+  <div class="gallery-grid">
+    <div class="gallery-item tall">
+      <img src="images/haldi-dance.jpg" alt="Choreography" />
+      <div class="gallery-caption">Choreography that gets everyone going</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/anchor-fun.webp" alt="Anchoring" />
+      <div class="gallery-caption">Anchors who make moments</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/entry-decor.jpg" alt="Stationery and decor" />
+      <div class="gallery-caption">Stationery that sets the tone</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/fun-badges.jpg" alt="Event experience" />
+      <div class="gallery-caption">Events designed to delight every guest</div>
+    </div>
+    <div class="gallery-item">
+      <img src="images/welcome-tika.jpg" alt="Moments" />
+      <div class="gallery-caption">Every ritual, done with heart</div>
+    </div>
+  </div>
+</div>
+
+<!-- NANCY -->
+<section class="nancy" id="nancy">
+  <div class="nancy-inner">
+    <div class="nancy-photo">
+      <img src="images/nancy.png" alt="Nancy Arora" />
+    </div>
+    <div class="nancy-text">
+      <p class="nancy-label">Nancy Arora · Founder</p>
+      <blockquote class="nancy-quote">
+        "A great wedding isn't about how much you spend. It's about how <em>alive</em> everyone feels."
+      </blockquote>
+      <p class="nancy-attr">— Nancy Arora</p>
+      <p class="nancy-bio">I've been choreographing weddings for years — and somewhere along the way I noticed that most of them have started to look exactly the same. Everyone's chasing a template, living up to a catalogue. But your wedding isn't supposed to look like someone else's. It's supposed to feel like your family. That's why I started this — to make sure every wedding is a heartfelt party that everyone actually enjoys.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULT -->
+<section class="consult" id="consult">
+  <div class="consult-inner">
+    <p class="eyebrow">Free consultation</p>
+    <h2>Still figuring out<br>what you <em>need?</em></h2>
+    <p>Drop your details — we'll call you. No packages, no pressure, just a real conversation about your wedding.</p>
+    <div class="consult-form">
+      <input class="consult-input" type="text" placeholder="Your name" />
+      <input class="consult-input" type="tel" placeholder="+91 your phone number" />
+      <input class="consult-input" type="text" placeholder="Wedding date (approx. is fine)" />
+      <button class="consult-btn">Book a Free Call</button>
+    </div>
+    <p class="consult-or">or reach out directly</p>
+    <a href="https://www.instagram.com/nancyarora481/" target="_blank" class="instagram-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4.5"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      DM us on Instagram
+    </a>
+    <p class="consult-phone">or call Nancy directly: <a href="tel:+917289045803">+91 72890 45803</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span class="logo-om footer-om">ॐ</span> Weddings by <span>Nancy Arora</span></div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#nancy">About</a></li>
+    <li><a href="#consult">Contact</a></li>
+  </ul>
+  <div class="footer-ig">@weddingsbynancyarora</div>
+  <div class="footer-phone"><a href="tel:+917289045803">+91 72890 45803</a></div>
+</footer>
+
+
+<!-- MODALS -->
+<div class="modal" id="modal-choreography">
+  <div class="modal-overlay" onclick="closeModal('choreography')"></div>
+  <div class="modal-card">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('choreography')">×</button>
+    <div class="modal-icon-wrap" data-icon="choreography" style="background:rgba(212,36,94,.1)"></div>
+    <h3>Wedding Choreography</h3>
+    <p class="modal-desc">Your family on the dance floor — actually having fun. This is our signature and where it all started.</p>
+    <p class="modal-section-label">What's included</p>
+    <ul class="modal-items">
+      <li><span class="modal-dot" style="background:#D4245E"></span>Group choreography for Sangeet, Baraat and Haldi</li>
+      <li><span class="modal-dot" style="background:#D4245E"></span>Couple's entry choreography</li>
+      <li><span class="modal-dot" style="background:#D4245E"></span>Family and friends performance sets</li>
+      <li><span class="modal-dot" style="background:#D4245E"></span>Flash mob routines</li>
+      <li><span class="modal-dot" style="background:#D4245E"></span>Song selection and concept design</li>
+      <li><span class="modal-dot" style="background:#D4245E"></span>Rehearsal sessions included</li>
+    </ul>
+    <div class="modal-divider"></div>
+    <p class="modal-cta-label">Interested? Drop your number — Nancy will call you.</p>
+    <div class="modal-form">
+      <input class="modal-input" type="tel" placeholder="+91 your number" />
+      <button class="modal-btn" style="background:#D4245E">Book a Call</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-anchoring">
+  <div class="modal-overlay" onclick="closeModal('anchoring')"></div>
+  <div class="modal-card">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('anchoring')">×</button>
+    <div class="modal-icon-wrap" data-icon="anchoring" style="background:rgba(244,130,42,.1)"></div>
+    <h3>Anchoring & Hosting</h3>
+    <p class="modal-desc">Energetic, warm anchoring that keeps every function moving and every guest engaged.</p>
+    <p class="modal-section-label">What's included</p>
+    <ul class="modal-items">
+      <li><span class="modal-dot" style="background:#F4822A"></span>Bilingual anchoring — Hindi and English</li>
+      <li><span class="modal-dot" style="background:#F4822A"></span>Script writing and show flow</li>
+      <li><span class="modal-dot" style="background:#F4822A"></span>Emcee for Sangeet, Mehendi, Reception and Baraat</li>
+      <li><span class="modal-dot" style="background:#F4822A"></span>Crowd engagement and energy management</li>
+      <li><span class="modal-dot" style="background:#F4822A"></span>Coordination with DJ and performers</li>
+      <li><span class="modal-dot" style="background:#F4822A"></span>Seamless transitions between all performances</li>
+    </ul>
+    <div class="modal-divider"></div>
+    <p class="modal-cta-label">Interested? Drop your number — Nancy will call you.</p>
+    <div class="modal-form">
+      <input class="modal-input" type="tel" placeholder="+91 your number" />
+      <button class="modal-btn" style="background:#F4822A">Book a Call</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-events">
+  <div class="modal-overlay" onclick="closeModal('events')"></div>
+  <div class="modal-card">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('events')">×</button>
+    <div class="modal-icon-wrap" data-icon="events" style="background:rgba(232,176,48,.12)"></div>
+    <h3>Event Experience Design</h3>
+    <p class="modal-desc">Games, activities, and moments your guests will be talking about for years.</p>
+    <p class="modal-section-label">What's included</p>
+    <ul class="modal-items">
+      <li><span class="modal-dot" style="background:#E8B030"></span>Custom game and activity planning per function</li>
+      <li><span class="modal-dot" style="background:#E8B030"></span>Bride vs groom side team competitions</li>
+      <li><span class="modal-dot" style="background:#E8B030"></span>Guest participation activities at every event</li>
+      <li><span class="modal-dot" style="background:#E8B030"></span>Game printables, props and materials</li>
+      <li><span class="modal-dot" style="background:#E8B030"></span>Complete event flow — nothing ever lulls</li>
+      <li><span class="modal-dot" style="background:#E8B030"></span>On-ground facilitation by our team</li>
+    </ul>
+    <div class="modal-divider"></div>
+    <p class="modal-cta-label">Interested? Drop your number — Nancy will call you.</p>
+    <div class="modal-form">
+      <input class="modal-input" type="tel" placeholder="+91 your number" />
+      <button class="modal-btn" style="background:#E8B030">Book a Call</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-stationery">
+  <div class="modal-overlay" onclick="closeModal('stationery')"></div>
+  <div class="modal-card">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('stationery')">×</button>
+    <div class="modal-icon-wrap" data-icon="stationery" style="background:rgba(196,67,106,.1)"></div>
+    <h3>Wedding Stationery & Branding</h3>
+    <p class="modal-desc">The complete visual identity of your wedding — from the first invite to the last thank you card.</p>
+    <p class="modal-section-label">What's included</p>
+    <ul class="modal-items">
+      <li><span class="modal-dot" style="background:#C4436A"></span>Wedding invite design</li>
+      <li><span class="modal-dot" style="background:#C4436A"></span>Logo and hashtag creation</li>
+      <li><span class="modal-dot" style="background:#C4436A"></span>Welcome board design for each event</li>
+      <li><span class="modal-dot" style="background:#C4436A"></span>Key card itinerary for guests</li>
+      <li><span class="modal-dot" style="background:#C4436A"></span>Room tent cards and thank you tags</li>
+      <li><span class="modal-dot" style="background:#C4436A"></span>Activity printables and custom game badges</li>
+      <li><span class="modal-dot" style="background:#C4436A"></span>Luggage tags and stickers</li>
+    </ul>
+    <div class="modal-divider"></div>
+    <p class="modal-cta-label">Interested? Drop your number — Nancy will call you.</p>
+    <div class="modal-form">
+      <input class="modal-input" type="tel" placeholder="+91 your number" />
+      <button class="modal-btn" style="background:#C4436A">Book a Call</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-photography">
+  <div class="modal-overlay" onclick="closeModal('photography')"></div>
+  <div class="modal-card">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('photography')">×</button>
+    <div class="modal-icon-wrap" data-icon="photography" style="background:rgba(123,94,167,.1)"></div>
+    <h3>Photography & Social Media</h3>
+    <p class="modal-desc">Every moment captured, and your guests feeling the magic in real time.</p>
+    <p class="modal-section-label">What's included</p>
+    <ul class="modal-items">
+      <li><span class="modal-dot" style="background:#7B5EA7"></span>In-house wedding photography team</li>
+      <li><span class="modal-dot" style="background:#7B5EA7"></span>Candid and portrait photography across all functions</li>
+      <li><span class="modal-dot" style="background:#7B5EA7"></span>Live Instagram updates during the wedding</li>
+      <li><span class="modal-dot" style="background:#7B5EA7"></span>Reel creation for each function</li>
+      <li><span class="modal-dot" style="background:#7B5EA7"></span>Social media story management</li>
+      <li><span class="modal-dot" style="background:#7B5EA7"></span>Edited photos delivered within agreed timeline</li>
+    </ul>
+    <div class="modal-divider"></div>
+    <p class="modal-cta-label">Interested? Drop your number — Nancy will call you.</p>
+    <div class="modal-form">
+      <input class="modal-input" type="tel" placeholder="+91 your number" />
+      <button class="modal-btn" style="background:#7B5EA7">Book a Call</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-vendors">
+  <div class="modal-overlay" onclick="closeModal('vendors')"></div>
+  <div class="modal-card">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('vendors')">×</button>
+    <div class="modal-icon-wrap" data-icon="vendors" style="background:rgba(196,86,42,.1)"></div>
+    <h3>Vendor Curation</h3>
+    <p class="modal-desc">We find the right people, negotiate the best prices, and get everything confirmed.</p>
+    <p class="modal-section-label">What's included</p>
+    <ul class="modal-items">
+      <li><span class="modal-dot" style="background:#C4562A"></span>Caterer discovery and shortlisting</li>
+      <li><span class="modal-dot" style="background:#C4562A"></span>Decorator and venue styling vendors</li>
+      <li><span class="modal-dot" style="background:#C4562A"></span>Makeup artist and mehendi artist</li>
+      <li><span class="modal-dot" style="background:#C4562A"></span>Molecular bar and bartenders</li>
+      <li><span class="modal-dot" style="background:#C4562A"></span>DJ, singer, percussionist and live bands</li>
+      <li><span class="modal-dot" style="background:#C4562A"></span>Price negotiation on your behalf</li>
+      <li><span class="modal-dot" style="background:#C4562A"></span>Coordination once vendors are onboarded</li>
+    </ul>
+    <div class="modal-divider"></div>
+    <p class="modal-cta-label">Interested? Drop your number — Nancy will call you.</p>
+    <div class="modal-form">
+      <input class="modal-input" type="tel" placeholder="+91 your number" />
+      <button class="modal-btn" style="background:#C4562A">Book a Call</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-gifting">
+  <div class="modal-overlay" onclick="closeModal('gifting')"></div>
+  <div class="modal-card">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('gifting')">×</button>
+    <div class="modal-icon-wrap" data-icon="gifting" style="background:rgba(255,182,39,.12)"></div>
+    <h3>Gifting & Room Experience</h3>
+    <p class="modal-desc">Thoughtful touches that make every guest feel truly welcomed from the moment they arrive.</p>
+    <p class="modal-section-label">What's included</p>
+    <ul class="modal-items">
+      <li><span class="modal-dot" style="background:#FFB627"></span>Custom room hamper design and sourcing</li>
+      <li><span class="modal-dot" style="background:#FFB627"></span>Welcome kits and fruit baskets</li>
+      <li><span class="modal-dot" style="background:#FFB627"></span>Ring tray styling</li>
+      <li><span class="modal-dot" style="background:#FFB627"></span>Thank you favors for guests</li>
+      <li><span class="modal-dot" style="background:#FFB627"></span>Personalised welcome notes</li>
+      <li><span class="modal-dot" style="background:#FFB627"></span>Packaging and delivery coordination</li>
+    </ul>
+    <div class="modal-divider"></div>
+    <p class="modal-cta-label">Interested? Drop your number — Nancy will call you.</p>
+    <div class="modal-form">
+      <input class="modal-input" type="tel" placeholder="+91 your number" />
+      <button class="modal-btn" style="background:#FFB627">Book a Call</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-moments">
+  <div class="modal-overlay" onclick="closeModal('moments')"></div>
+  <div class="modal-card">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('moments')">×</button>
+    <div class="modal-icon-wrap" data-icon="moments" style="background:rgba(184,122,26,.1)"></div>
+    <h3>Special Moments Planning</h3>
+    <p class="modal-desc">Every moment you want to remember — planned, prepared, and executed exactly as you imagined.</p>
+    <p class="modal-section-label">What's included</p>
+    <ul class="modal-items">
+      <li><span class="modal-dot" style="background:#B87A1A"></span>Ring exchange planning and execution</li>
+      <li><span class="modal-dot" style="background:#B87A1A"></span>Cake cutting choreography and setup</li>
+      <li><span class="modal-dot" style="background:#B87A1A"></span>Pheras ending ritual design</li>
+      <li><span class="modal-dot" style="background:#B87A1A"></span>Surprise entry concepts and execution</li>
+      <li><span class="modal-dot" style="background:#B87A1A"></span>Custom performance or showcase for the couple</li>
+      <li><span class="modal-dot" style="background:#B87A1A"></span>SFX coordination — colour bombs, fire, pyros</li>
+    </ul>
+    <div class="modal-divider"></div>
+    <p class="modal-cta-label">Interested? Drop your number — Nancy will call you.</p>
+    <div class="modal-form">
+      <input class="modal-input" type="tel" placeholder="+91 your number" />
+      <button class="modal-btn" style="background:#B87A1A">Book a Call</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-management">
+  <div class="modal-overlay" onclick="closeModal('management')"></div>
+  <div class="modal-card">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('management')">×</button>
+    <div class="modal-icon-wrap" data-icon="management" style="background:rgba(122,58,42,.1)"></div>
+    <h3>Day-of Management</h3>
+    <p class="modal-desc">We're on the ground from morning to midnight so you don't have to think about a single thing.</p>
+    <p class="modal-section-label">What's included</p>
+    <ul class="modal-items">
+      <li><span class="modal-dot" style="background:#7A3A2A"></span>Show flow creation and on-ground management</li>
+      <li><span class="modal-dot" style="background:#7A3A2A"></span>Hotel check-in coordination for guests</li>
+      <li><span class="modal-dot" style="background:#7A3A2A"></span>Room allotment management</li>
+      <li><span class="modal-dot" style="background:#7A3A2A"></span>Vendor timing and on-ground coordination</li>
+      <li><span class="modal-dot" style="background:#7A3A2A"></span>Dedicated shadow for bride and groom</li>
+      <li><span class="modal-dot" style="background:#7A3A2A"></span>Logistics across all functions</li>
+    </ul>
+    <div class="modal-divider"></div>
+    <p class="modal-cta-label">Interested? Drop your number — Nancy will call you.</p>
+    <div class="modal-form">
+      <input class="modal-input" type="tel" placeholder="+91 your number" />
+      <button class="modal-btn" style="background:#7A3A2A">Book a Call</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-social">
+  <div class="modal-overlay" onclick="closeModal('social')"></div>
+  <div class="modal-card">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('social')">×</button>
+    <div class="modal-icon-wrap" data-icon="social" style="background:rgba(91,110,232,.1)"></div>
+    <h3>Social Media Coverage</h3>
+    <p class="modal-desc">Two dedicated team members capturing your wedding in real time — so your guests and family who couldn't be there feel like they were.</p>
+    <p class="modal-section-label">What's included</p>
+    <ul class="modal-items">
+      <li><span class="modal-dot" style="background:#5B6EE8"></span>2 dedicated social media team members throughout the event</li>
+      <li><span class="modal-dot" style="background:#5B6EE8"></span>Live Instagram stories posted during each function</li>
+      <li><span class="modal-dot" style="background:#5B6EE8"></span>Transition reels for each function — posted same day</li>
+      <li><span class="modal-dot" style="background:#5B6EE8"></span>Edited highlight reels delivered after the wedding</li>
+      <li><span class="modal-dot" style="background:#5B6EE8"></span>All raw phone videos and photos shared with you</li>
+      <li><span class="modal-dot" style="background:#5B6EE8"></span>Complete raw content archive — yours to keep</li>
+    </ul>
+    <div class="modal-divider"></div>
+    <p class="modal-cta-label">Interested? Drop your details — we'll call you.</p>
+    <input class="modal-input" type="text" placeholder="Your name" style="margin-bottom:8px;width:100%" />
+    <div class="modal-form">
+      <input class="modal-input" type="tel" placeholder="+91 your number" />
+      <button class="modal-btn" style="background:#5B6EE8">Book a Call</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal.active').forEach(function(m) {
+        m.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+
+  /* ── MODAL ENHANCEMENTS ── */
+  // Update CTA label text in all existing modals
+  document.querySelectorAll('.modal-cta-label').forEach(function(el) {
+    if (el.textContent.includes('Nancy will call you')) {
+      el.textContent = "Interested? Drop your details — we'll call you.";
+    }
+  });
+  // Insert name field before each modal-form (except social which already has it)
+  document.querySelectorAll('.modal:not(#modal-social) .modal-form').forEach(function(form) {
+    const nameInput = document.createElement('input');
+    nameInput.className = 'modal-input';
+    nameInput.type = 'text';
+    nameInput.placeholder = 'Your name';
+    nameInput.style.marginBottom = '8px';
+    nameInput.style.width = '100%';
+    form.parentNode.insertBefore(nameInput, form);
+  });
+  // Add Instagram link below each modal form
+  document.querySelectorAll('.modal-card').forEach(function(card) {
+    const ig = document.createElement('p');
+    ig.style.cssText = 'text-align:center;margin-top:12px;font-size:12px;color:#7A6A65;';
+    ig.innerHTML = 'or <a href="https://www.instagram.com/nancyarora481/" target="_blank" style="color:#D4245E;font-weight:500;">DM us on Instagram @nancyarora481</a>';
+    const form = card.querySelector('.modal-form');
+    if (form) form.after(ig);
+  });
+
+  /* ── ICONS ── */
+  const ICONS = {
+    choreography: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="6" r="3.5"/>
+      <circle cx="24" cy="4.2" r="1.1" fill="currentColor" stroke="none"/>
+      <path d="M24 9 Q22 16 20 24"/>
+      <path d="M22 14 Q15 10 10 12 Q11 16 17 15"/>
+      <path d="M26 14 Q33 9 38 11 Q37 15 31 15"/>
+      <path d="M10 12 Q5 22 7 32" stroke-opacity="0.4" stroke-dasharray="2,2"/>
+      <path d="M20 24 Q16 34 14 44"/>
+      <path d="M20 24 Q25 28 30 26 Q31 21 26 19"/>
+      <path d="M13 43 Q13 46 17 44"/>
+      <circle cx="9" cy="26" r="1" fill="currentColor" stroke="none" opacity="0.35"/>
+      <circle cx="7" cy="30" r="1" fill="currentColor" stroke="none" opacity="0.35"/>
+    </svg>`,
+
+    anchoring: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="17" y="4" width="14" height="20" rx="7"/>
+      <path d="M9 20 Q9 34 24 34 Q39 34 39 20"/>
+      <line x1="24" y1="34" x2="24" y2="42"/>
+      <line x1="16" y1="42" x2="32" y2="42"/>
+      <path d="M38 8 L39.2 10.2 L41 8 L39.2 5.8 Z" fill="currentColor" stroke="none"/>
+      <path d="M41 15 L42 16.8 L43.5 15 L42 13.2 Z" fill="currentColor" stroke="none"/>
+      <circle cx="38" cy="20" r="1.6" fill="currentColor" stroke="none" opacity="0.6"/>
+      <line x1="42" y1="23" x2="42" y2="27" stroke-width="1.3"/>
+      <line x1="40" y1="25" x2="44" y2="25" stroke-width="1.3"/>
+    </svg>`,
+
+    events: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="10" y1="10" x2="38" y2="38"/>
+      <circle cx="10" cy="10" r="4.5"/>
+      <circle cx="38" cy="38" r="4.5"/>
+      <circle cx="17.5" cy="17.5" r="1.6" fill="currentColor" stroke="none"/>
+      <circle cx="30.5" cy="30.5" r="1.6" fill="currentColor" stroke="none"/>
+      <line x1="38" y1="10" x2="10" y2="38"/>
+      <circle cx="38" cy="10" r="4.5"/>
+      <circle cx="10" cy="38" r="4.5"/>
+      <circle cx="30.5" cy="17.5" r="1.6" fill="currentColor" stroke="none"/>
+      <circle cx="17.5" cy="30.5" r="1.6" fill="currentColor" stroke="none"/>
+      <path d="M24 21 L24 23 M22 22 L26 22" stroke-width="1.6"/>
+      <circle cx="24" cy="25.5" r="2" fill="currentColor" stroke="none"/>
+    </svg>`,
+
+    stationery: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="6" y="10" width="36" height="30" rx="3"/>
+      <path d="M6 14 L24 25 L42 14"/>
+      <circle cx="24" cy="33" r="3.5"/>
+      <path d="M24 29.5 Q21.5 26.5 18.5 28.5 Q21 31 24 29.5"/>
+      <path d="M24 29.5 Q26.5 26.5 29.5 28.5 Q27 31 24 29.5"/>
+      <path d="M20.5 32 Q17.5 31 16.5 33.5 Q19.5 35.5 20.5 32"/>
+      <path d="M27.5 32 Q30.5 31 31.5 33.5 Q28.5 35.5 27.5 32"/>
+      <circle cx="11" cy="18" r="1.5" fill="currentColor" stroke="none" opacity="0.4"/>
+      <circle cx="37" cy="18" r="1.5" fill="currentColor" stroke="none" opacity="0.4"/>
+    </svg>`,
+
+    photography: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="16" width="36" height="26" rx="4"/>
+      <path d="M12 16 L12 12 Q12 10 14 10 L26 10 Q28 10 28 12 L28 16"/>
+      <circle cx="20" cy="29" r="8"/>
+      <circle cx="20" cy="29" r="4"/>
+      <circle cx="32" cy="21" r="2.5" fill="currentColor" stroke="none" opacity="0.5"/>
+      <circle cx="42" cy="14" r="3" opacity="0.65" stroke-width="1.5"/>
+      <circle cx="44" cy="23" r="2" opacity="0.45" stroke-width="1.4"/>
+      <circle cx="43" cy="31" r="1.4" opacity="0.3" stroke-width="1.3"/>
+    </svg>`,
+
+    vendors: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="2" y1="36" x2="46" y2="36"/>
+      <rect x="12" y="20" width="24" height="16" rx="2"/>
+      <path d="M12 20 Q24 10 36 20"/>
+      <line x1="18" y1="20" x2="16" y2="36"/>
+      <line x1="30" y1="20" x2="32" y2="36"/>
+      <line x1="6" y1="36" x2="6" y2="44"/>
+      <line x1="42" y1="36" x2="42" y2="44"/>
+      <circle cx="24" cy="8" r="3.5"/>
+      <path d="M24 4.5 Q21.5 1.5 19 4 Q21.5 6.5 24 4.5"/>
+      <path d="M24 4.5 Q26.5 1.5 29 4 Q26.5 6.5 24 4.5"/>
+      <path d="M20.5 7 Q17.5 6 16 9 Q19 10.5 20.5 7"/>
+      <path d="M27.5 7 Q30.5 6 32 9 Q29 10.5 27.5 7"/>
+    </svg>`,
+
+    gifting: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="22" width="32" height="22" rx="2"/>
+      <rect x="6" y="16" width="36" height="6" rx="2"/>
+      <line x1="24" y1="16" x2="24" y2="44"/>
+      <line x1="6" y1="19" x2="42" y2="19"/>
+      <circle cx="24" cy="12" r="3"/>
+      <path d="M24 9 Q21.5 6 19 8 Q21 10 24 9"/>
+      <path d="M24 9 Q26.5 6 29 8 Q27 10 24 9"/>
+      <path d="M21 11.5 Q18 10 17 13 Q19.5 14.5 21 11.5"/>
+      <path d="M27 11.5 Q30 10 31 13 Q28.5 14.5 27 11.5"/>
+      <path d="M21.5 14 Q20 17 22.5 17 Q23.5 15.5 21.5 14"/>
+      <path d="M26.5 14 Q28 17 25.5 17 Q24.5 15.5 26.5 14"/>
+    </svg>`,
+
+    moments: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 34 Q10 44 24 44 Q38 44 36 34"/>
+      <line x1="12" y1="34" x2="16" y2="22"/>
+      <line x1="36" y1="34" x2="32" y2="22"/>
+      <path d="M16 22 L24 8 L32 22 L24 33 Z"/>
+      <line x1="16" y1="22" x2="32" y2="22"/>
+      <line x1="24" y1="8" x2="24" y2="33"/>
+      <path d="M40 6 L40 10 M38 8 L42 8" stroke-width="1.7"/>
+      <path d="M44 14 L44 18 M42 16 L46 16" stroke-width="1.4"/>
+      <circle cx="42" cy="22" r="1.4" fill="currentColor" stroke="none"/>
+      <path d="M37 2 L37 5.5 M35.2 3.8 L38.8 3.8" stroke-width="1.3" opacity="0.55"/>
+    </svg>`,
+
+    management: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="8" width="32" height="36" rx="3"/>
+      <rect x="18" y="4" width="12" height="8" rx="3"/>
+      <circle cx="24" cy="20" r="3"/>
+      <path d="M24 17 Q22 14 19 16 Q21 18.5 24 17"/>
+      <path d="M24 17 Q26 14 29 16 Q27 18.5 24 17"/>
+      <path d="M21 19.5 Q18 18.5 17 21.5 Q19.5 23 21 19.5"/>
+      <path d="M27 19.5 Q30 18.5 31 21.5 Q28.5 23 27 19.5"/>
+      <path d="M14 31 L16.5 33.5 L21 28.5"/>
+      <line x1="25" y1="31" x2="34" y2="31"/>
+      <path d="M14 38 L16.5 40.5 L21 35.5"/>
+      <line x1="25" y1="38" x2="31" y2="38"/>
+    </svg>`,
+
+    social: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="12" y="6" width="20" height="36" rx="4"/>
+      <circle cx="22" cy="38" r="1.5" fill="currentColor" stroke="none"/>
+      <line x1="18" y1="10" x2="26" y2="10" stroke-width="1.4"/>
+      <circle cx="22" cy="22" r="7"/>
+      <path d="M19 19.5 L26 22 L19 24.5 Z" fill="currentColor" stroke="none"/>
+      <path d="M35 10 Q43 16 43 26 Q43 36 35 40" stroke-width="1.5" opacity="0.55"/>
+      <path d="M37 15 Q43 19 43 26 Q43 33 37 37" stroke-width="1.2" opacity="0.3"/>
+      <path d="M40 21 L40 25 M38.2 23 L41.8 23" stroke-width="1.3" opacity="0.5"/>
+    </svg>`
+  };
+
+  document.querySelectorAll('[data-icon]').forEach(function(el) {
+    const name = el.dataset.icon;
+    if (ICONS[name]) el.innerHTML = ICONS[name];
+  });
+</script>
+
+</body>
+</html>
