@@ -983,6 +983,43 @@
     const name = el.dataset.icon;
     if (ICONS[name]) el.innerHTML = ICONS[name];
   });
+
+  /* ── WHATSAPP INTEGRATION ── */
+  const WA_NUMBER = '917289045803';
+
+  function openWhatsApp(msg) {
+    window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+  }
+
+  // Modal "Book a Call" buttons
+  document.querySelectorAll('.modal-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const card = btn.closest('.modal-card');
+      const service = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      const nameInput = card.querySelector('input[type="text"]');
+      const phoneInput = card.querySelector('input[type="tel"]');
+      const name = nameInput ? nameInput.value.trim() : '';
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+      let msg = 'Hi Nancy! I came across your website.';
+      if (service) msg += ' I\'m interested in your *' + service + '* service.';
+      if (name) msg += '\nName: ' + name;
+      if (phone) msg += '\nPhone: ' + phone;
+      openWhatsApp(msg);
+    });
+  });
+
+  // Main consult "Book a Free Call" button
+  document.querySelector('.consult-btn').addEventListener('click', function() {
+    const inputs = document.querySelectorAll('.consult-form .consult-input');
+    const name = inputs[0] ? inputs[0].value.trim() : '';
+    const phone = inputs[1] ? inputs[1].value.trim() : '';
+    const date = inputs[2] ? inputs[2].value.trim() : '';
+    let msg = 'Hi Nancy! I came across your website and would love to discuss my wedding.';
+    if (name) msg += '\nName: ' + name;
+    if (phone) msg += '\nPhone: ' + phone;
+    if (date) msg += '\nWedding date: ' + date;
+    openWhatsApp(msg);
+  });
 </script>
 
 </body>
